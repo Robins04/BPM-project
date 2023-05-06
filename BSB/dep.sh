@@ -10,8 +10,8 @@ sudo apt-get update #get latest update
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 #sudo apt-get install -y pillow
-python3 -m pip install --upgarde smbus
-python3 -m pip install --upgarde psutil
+python3 -m pip install smbus
+python3 -m pip install psutil
 
 
 
