@@ -47,7 +47,7 @@ def disk_us():
 #power mode
 def power_mode():
 	
-	target = subprocess.check_output("nvpmodel -q | grep -o '5W\|MAXN'", shell = True).decode('utf-8').strip('\n')
+	target = subprocess.check_output("sudo nvpmodel -q '5W\|MAXN'", shell = True).decode('utf-8').strip('\n') #maybe needed: | grep -o 
 	if target == "MAXN":
 		target = "10W"
 	else:
