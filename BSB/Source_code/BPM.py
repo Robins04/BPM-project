@@ -16,7 +16,7 @@ def IP_ADDR():
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		s.connect(("8.8.8.8",80)) 
-		ip = str(s.getsockname()[0])
+		ip = "IP"+str(s.getsockname()[0])
 		s.close()
 	except Exception as ev: 
 		ip = "Not connected"
@@ -27,20 +27,20 @@ def IP_ADDR():
 #getting ram 
 def ram_u_per():
 	mem_percent = psutil.virtual_memory().percent
-	mem_round=str(mem_percent)+"%"
+	mem_round="RAM"+str(mem_percent)+"%"
 	return mem_round
 	
 
 #getting CPU 
 def cpu_u_per():
 	cpu_ = psutil.cpu_percent(.05)
-	CPU_int = str(cpu_)+"%"
+	CPU_int = "CPU"+str(cpu_)+"%"
 	return CPU_int
 	
 #disk usage 
 def disk_us():
 	disk = psutil.disk_usage('.').percent
-	disk_str = str(disk)+"%"
+	disk_str = "disk"+str(disk)+"%"
 	return disk_str
 
 
@@ -200,15 +200,15 @@ def main():
 				display.oled_display()
 				display.oled_refresh(40,15,CPU)				
 				CPU = cpu_u_per()
-				display.oled_print(40,15, CPU)
+				display.oled_print(70,15, CPU)
 				display.oled_display()
 				display.oled_refresh(1,15, mem_round)
 				mem_round = ram_u_per()
 				display.oled_print(1,15, mem_round)
 				display.oled_display()
-				display.oled_refresh(80,15,disk_u)
+				display.oled_refresh(60,45,disk_u)
 				disk_u=disk_us()
-				display.oled_print(80,15,disk_u)
+				display.oled_print(60,45,disk_u)
 				display.oled_display()
 				display.oled_refresh(0, 45, pow_1)
 				display.oled_display()
