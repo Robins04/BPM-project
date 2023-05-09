@@ -193,11 +193,13 @@ def main():
 				
 		else:
 			try:
-				display.oled_refresh(0,0, addr)
-				display.oled_display()				
-				addr = IP_ADDR()
-				display.oled_print(0,0, addr)
-				display.oled_display()
+				if(addr != IP_ADDR):
+					display.oled_refresh(0,0, addr)
+					display.oled_display()				
+					addr = IP_ADDR()
+					display.oled_print(0,0, addr)
+					display.oled_display()
+				
 				display.oled_refresh(40,15,CPU)				
 				CPU = cpu_u_per()
 				display.oled_print(70,15, CPU)
@@ -206,15 +208,19 @@ def main():
 				mem_round = ram_u_per()
 				display.oled_print(1,15, mem_round)
 				display.oled_display()
-				display.oled_refresh(60,45,disk_u)
-				disk_u=disk_us()
-				display.oled_print(60,45,disk_u)
-				display.oled_display()
-				display.oled_refresh(0, 45, pow_1)
-				display.oled_display()
-				pow_1=power_mode()
-				display.oled_print(0, 45, pow_1)
-				display.oled_display()
+				if(disk_u != disk_us()):
+					display.oled_refresh(60,45,disk_u)
+					disk_u=disk_us()
+					display.oled_print(60,45,disk_u)
+					display.oled_display()
+				
+				if(pow_1 != power_mode()):
+					display.oled_refresh(0, 45, pow_1)
+					display.oled_display()
+					pow_1=power_mode()
+					display.oled_print(0, 45, pow_1)
+					display.oled_display()
+				
 				display.oled_refresh(0, 30, str(round(bat_val[0],1))+"V")
 				display.oled_refresh(35, 30, bat_val[1]+"A")
 				display.oled_refresh(80, 30, bat_val[2]+"W")
