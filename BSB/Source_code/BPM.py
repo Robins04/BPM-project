@@ -88,7 +88,8 @@ def bat_lev(soc, dt, soc_init, BV, C):
 	socList=[0]
 	C = float(C)
 	nomC = 2.5 #nominal currentin AH to be changed if battery have different nominal current
-
+	numCell = 4 #number of battery cells (standard is 4)
+	
 	if C > 0.0:
 		return "Charging"
 	else:
@@ -128,13 +129,13 @@ def bat_lev(soc, dt, soc_init, BV, C):
 				soc_init = 5
 				break
 		if len(socList) == 10:
-			soc = soc_init+(((C)/nomC)*(dt)/36)	
+			soc = soc_init+(((C)/nomC*numCell)*(dt)/36)	
 			socList.append(soc)
 			socList.pop(0)
 			socP = sum(socList)/len(socList)
 			return socP, soc_init
 		else:
-			soc = soc_init+(((C)/nomC)*(dt)/36)
+			soc = soc_init+(((C)/nomC*numCell)*(dt)/36)
 			socList.append(soc)
 			return soc, soc_init
 		
