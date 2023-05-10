@@ -22,7 +22,7 @@ class ina219():
 		self.currentlsb = 0
 		self.powerlsb = 0
 		
-		self.set_cal_16V_3A() #Change name for the final product
+		self.set_cal_16V_3A() 
 
 	
 
