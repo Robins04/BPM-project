@@ -27,20 +27,20 @@ def IP_ADDR():
 #getting ram 
 def ram_u_per():
 	mem_percent = psutil.virtual_memory().percent
-	mem_round="RAM"+str(mem_percent)+"%"
+	mem_round="RAM "+str(mem_percent)+"%"
 	return mem_round
 	
 
 #getting CPU 
 def cpu_u_per():
 	cpu_ = psutil.cpu_percent(.05)
-	CPU_int = "CPU"+str(cpu_)+"%"
+	CPU_int = "CPU "+str(cpu_)+"%"
 	return CPU_int
 	
 #disk usage 
 def disk_us():
 	disk = psutil.disk_usage('.').percent
-	disk_str = "disk"+str(disk)+"%"
+	disk_str = "disk "+str(disk)+"%"
 	return disk_str
 
 
@@ -194,34 +194,28 @@ def main():
 				
 		else:
 			try:
-				if(addr != IP_ADDR):
-					display.oled_refresh(0,0, addr)
-					display.oled_display()				
-					addr = IP_ADDR()
-					display.oled_print(0,0, addr)
-					display.oled_display()
-				
-				display.oled_refresh(40,15,CPU)				
+				display.oled_refresh(0,0, addr)
+				display.oled_display()				
+				addr = IP_ADDR()
+				display.oled_print(0,0, addr)
+				display.oled_display()
+				display.oled_refresh(63,15,CPU)				
 				CPU = cpu_u_per()
-				display.oled_print(70,15, CPU)
+				display.oled_print(63,15, CPU)
 				display.oled_display()
 				display.oled_refresh(1,15, mem_round)
 				mem_round = ram_u_per()
 				display.oled_print(1,15, mem_round)
 				display.oled_display()
-				if(disk_u != disk_us()):
-					display.oled_refresh(60,45,disk_u)
-					disk_u=disk_us()
-					display.oled_print(60,45,disk_u)
-					display.oled_display()
-				
-				if(pow_1 != power_mode()):
-					display.oled_refresh(0, 45, pow_1)
-					display.oled_display()
-					pow_1=power_mode()
-					display.oled_print(0, 45, pow_1)
-					display.oled_display()
-				
+				display.oled_refresh(60,45,disk_u)
+				disk_u=disk_us()
+				display.oled_print(60,45,disk_u)
+				display.oled_display()
+				display.oled_refresh(0, 45, pow_1)
+				display.oled_display()
+				pow_1=power_mode()
+				display.oled_print(0, 45, pow_1)
+				display.oled_display()				
 				display.oled_refresh(0, 30, str(round(bat_val[0],1))+"V")
 				display.oled_refresh(35, 30, bat_val[1]+"A")
 				display.oled_refresh(80, 30, bat_val[2]+"W")
