@@ -129,13 +129,13 @@ def bat_lev(soc, dt, soc_init, BV, C):
 				soc_init = 5
 				break
 		if len(socList) == 10:
-			soc = soc_init+(((C*2)/nomC*numCell)*(dt)/36)	
+			soc = soc_init+(C*2*dt)/(nomC*numCell*36)	
 			socList.append(soc)
 			socList.pop(0)
 			socP = sum(socList)/len(socList)
 			return socP, soc_init
 		else:
-			soc = soc_init+(((2*C)/nomC*numCell)*(dt)/36)
+			soc = soc_init+(2*C*dt)/nomC*numCell*36)
 			socList.append(soc)
 			return soc, soc_init
 		
