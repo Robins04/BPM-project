@@ -169,12 +169,14 @@ def main():
 			display=display_i2c()#shortcut to library
 		except(OSError, AttributeError) as he:			
 			display=0
+			print("OLED is disconected")
 		
 		
 		if ina == 0 and display == 0:
 
 			time.sleep(2)
 			dt += 2
+			print("I2C disconnected")
 			main()		
 
 		if ina  == 0 and display != 0:
